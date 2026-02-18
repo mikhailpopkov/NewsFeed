@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "axios": "^1.13.5",
+    "classes": "^0.3.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^6.30.3"
+    "react-router-dom": "^6.30.3",
+    "sass": "^1.97.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

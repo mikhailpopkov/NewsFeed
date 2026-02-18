@@ -1,0 +1,45 @@
+.news {
+    margin: 0 0 100px;
+}
+.wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.block {
+    width: calc(33.333% - 40px / 3);
+
+    &Imgbox {
+        max-width: 100%;
+        margin: 0 0 18px;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+            max-height: 245px;
+            height: 100%;
+        }
+    }
+
+    &Date {
+        position: relative;
+        font-size: 12px;
+        font-weight: 400;
+        color: #747474;
+        padding: 0 35px;
+        line-height: 30px;
+
+        &::after {
+            position: absolute;
+            content: '';
+            width: 24px;
+            height: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            background: url(/public/images/date-icon.svg) no-repeat;
+        }
+    }
+}

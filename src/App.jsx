@@ -1,10 +1,11 @@
 import { useState } from 'react'
+import NewsList from './components/News/NewsList'
 
 function App() {
 
   return (
     <>
-      Hello World!
+      <NewsList title='Новости'/>
     </>
   )
 }
