@@ -1,0 +1,30 @@
+.btn {
+    padding: 10px 48px 10px 14px;
+    background-color: #195A94;
+    color: #fff;
+    border-radius: 8px;
+    line-height: 30px;
+    font-size: 13px;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+        &::after {
+            right: 5px;
+        }
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        width: 24px;
+        height: 24px;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 14px;
+        background: url('/public/images/btn-arrow.svg') no-repeat;
+        transition: right .3s ease-in-out;
+    }
+}

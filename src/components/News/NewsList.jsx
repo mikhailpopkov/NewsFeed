@@ -19,7 +19,6 @@ function NewsList({title}) {
     return (
         <>
             <h1>{title}</h1>
-            <div className="container">
                 {
                     isError &&
                     <h2>Произошла ошибка {isError}</h2>
@@ -40,7 +39,6 @@ function NewsList({title}) {
                         </div>
                     </>
                 }
-            </div>
         </>
     )
 }

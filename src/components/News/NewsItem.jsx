@@ -1,3 +1,4 @@
+import Button from "../UI/Button/Button";
 import classes from  "./News.module.scss";
 
 function NewsItem({news}) {
@@ -12,7 +13,15 @@ function NewsItem({news}) {
             <div className={classes.blockDate}>{formattedDate}</div>
             <div className={classes.blockTitle}>{news.title}</div>
             <div className={classes.blockDescription}>{news.description}</div>
-            <div className={classes.blockContent}>{news.content}</div>
+            <div className={classes.blockFooter}>
+                <div className={classes.blockAuthor}>
+                    <div className={classes.blockAuthorImgbox}>
+                        <img src={news.author.backgroundUrl} loading="lazy"/>
+                    </div>
+                    <div className={classes.blockAuthorName}>{news.author.name}</div>
+                </div>
+                <Button>Читать подробнее</Button>
+            </div>
         </div>
     )
 }

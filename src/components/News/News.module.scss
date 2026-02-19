@@ -3,7 +3,7 @@
 }
 .wrapper {
     display: flex;
-    gap: 20px;
+    gap: 40px 20px;
     flex-wrap: wrap;
 }
 .block {
@@ -41,5 +41,54 @@
             left: 0;
             background: url(/public/images/date-icon.svg) no-repeat;
         }
+    }
+
+    &Title {
+        font-size: 22px;
+        font-weight: 600;
+        color: #195A94;
+        margin: 0 0 18px;
+    }
+
+    &Description {
+        font-size: 16px;
+        color: #747474;
+        font-weight: 400;
+        padding: 0 0 18px;
+        margin: 0 0 18px;
+        border-bottom: 1px solid #747474;
+        min-height: 36px;
+    }
+
+    &Author {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+
+        &Imgbox {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+        }
+
+        &Name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #747474;
+        }
+    }
+
+    &Footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 }
