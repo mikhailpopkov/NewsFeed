@@ -2,7 +2,7 @@ import NewsList from "../components/News/NewsList";
 
 function Home() {
     return (
-        <NewsList/>
+        <h1>Главная страница</h1>
     )
 }
 

@@ -8,6 +8,15 @@ body {
     margin: 0;
     padding: 0;
 }
+ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+        padding: 0;
+        margin: 0;
+    }
+}
 h1 {
     font-size: 40px;
     font-weight: 700;
@@ -24,4 +33,119 @@ h2 {
     max-width: 1440px;
     margin: 0 auto;
     padding: 0 50px;
+}
+
+.b-news-detail {
+    h1 {
+        text-align: left;
+    }
+
+    .news-detail {
+        &__container {
+            display: flex;
+            gap: 50px;
+        }
+
+        &__content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            width: calc(80% - 50px / 2);
+        }
+
+        &__info {
+            width: calc(50% - 40px / 2);
+        }
+
+        &__imgbox {
+            width: calc(50% - 40px / 2);
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &__wrapper {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            align-items: center;
+            padding: 0 0 15px;
+            margin: 0 0 15px;
+            border-bottom: 2px solid #195A94;
+        }
+
+        &__author {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+
+            &-imgbox {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                flex-shrink: 0;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            &-name {
+                font-size: 13px;
+                font-weight: 600;
+                color: #747474;
+            }
+        }
+
+        &__date {
+            position: relative;
+            font-size: 13px;
+            padding: 0 0 0 35px;
+            line-height: 30px;
+            color: #747474;
+
+            &::after {
+                position: absolute;
+                content: '';
+                width: 24px;
+                height: 24px;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 0;
+                background: url('/public/images/date-icon.svg') no-repeat;
+            }
+        }
+
+        &__tags  {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+
+            li {
+                list-style-type: none;
+                padding: 5px 20px;
+                border-radius: 5px;
+                border: 1px solid #f4a460;
+                color: #f4a460;
+            }
+        }
+
+        &__text {
+            font-size: 18px;
+            line-height: 1.5s;
+            margin: 0 0 20px;
+        }
+
+        &__hot {
+            width: calc(20% - 50px / 2);
+        }
+    }
 }

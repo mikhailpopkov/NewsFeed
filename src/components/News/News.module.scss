@@ -30,6 +30,7 @@
         color: #747474;
         padding: 0 35px;
         line-height: 30px;
+        margin: 0 0 15px;
 
         &::after {
             position: absolute;
@@ -90,5 +91,20 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+
+    &Tags {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin: 0 0 15px;
+
+        li {
+            list-style-type: none;
+            padding: 5px 20px;
+            border-radius: 5px;
+            border: 1px solid #f4a460;
+            color: #f4a460;
+        }
     }
 }

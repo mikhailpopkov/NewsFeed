@@ -5,4 +5,9 @@ export default class FetchData {
         const res = await axios.get('https://nest.tomfoolery.ru/news');
         return res.data;
     }
+
+    static async getNewsDetail(id) {
+        const res = await axios.get('https://nest.tomfoolery.ru/news/' + id);
+        return res.data;
+    }
 }
