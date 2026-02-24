@@ -4,8 +4,10 @@ import { useFetching } from "../../hooks/useFetching";
 import classes from './News.module.scss';
 import NewsItem from "./NewsItem";
 import "/src/styles/style.scss";
+import Tags from "../UI/Tags/Tags";
 
 function NewsList({title}) {
+    const [activeTag, setActiveTag] = useState(null);
     const [news, setNews] = useState([]);
     const [fetching, isLoading, isError] = useFetching(async () => {
         const newsData = await FetchData.getNews();
@@ -19,6 +21,7 @@ function NewsList({title}) {
     return (
         <>
             <h1>{title}</h1>
+            <Tags value={activeTag} onClickActiveTag={(i) => setActiveTag(i)}/>
                 {
                     isError &&
                     <h2>Произошла ошибка {isError}</h2>

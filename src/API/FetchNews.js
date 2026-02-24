@@ -10,4 +10,9 @@ export default class FetchData {
         const res = await axios.get('https://nest.tomfoolery.ru/news/' + id);
         return res.data;
     }
+
+    static async getNewsTags() {
+        const res = await axios.get('https://nest.tomfoolery.ru/tags');
+        return res.data;
+    }
 }

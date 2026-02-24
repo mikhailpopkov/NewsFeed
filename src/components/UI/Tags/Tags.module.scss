@@ -1,0 +1,27 @@
+.tags {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin: 0 0 30px;
+}
+.tagBtn {
+        display: block;
+        padding: 5px 20px;
+        border-radius: 5px;
+        border: 1px solid #f4a460;
+        color: #f4a460;
+        background-color: transparent;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+        &:hover {
+            background-color: #f4a460;
+            color: #fff;
+        }
+
+        &.active {
+        background-color: #f4a460;
+        color: #fff;
+    }
+}
