@@ -1,8 +1,13 @@
 import axios from "axios";
 
 export default class FetchData {
-    static async getNews() {
-        const res = await axios.get('https://nest.tomfoolery.ru/news');
+    static async getNews(limit = 6, page = 1) {
+        const res = await axios.get('https://nest.tomfoolery.ru/news', {
+            params: {
+                limit,
+                page
+            }
+        });
         return res.data;
     }
 

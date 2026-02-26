@@ -5,18 +5,30 @@ import classes from './News.module.scss';
 import NewsItem from "./NewsItem";
 import "/src/styles/style.scss";
 import Tags from "../UI/Tags/Tags";
+import getPagination from "../../utils/getPagination";
+import Pagination from "../UI/Pagination/Pagination";
 
 function NewsList({title}) {
     const [activeTag, setActiveTag] = useState(null);
     const [news, setNews] = useState([]);
+    const [limit, setLimit] = useState(6);
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
+
     const [fetching, isLoading, isError] = useFetching(async () => {
-        const newsData = await FetchData.getNews();
+        const newsData = await FetchData.getNews(limit, page);
         setNews(newsData.data);
+        setTotalPages(newsData.meta.totalPages)
     })
+
+    const pagination = getPagination(totalPages);
+    function changePage(p) {
+        setPage(p);
+    }
 
     useEffect(() => {
         fetching();
-    }, [])
+    }, [page])
 
     return (
         <>
@@ -42,6 +54,7 @@ function NewsList({title}) {
                         </div>
                     </>
                 }
+            <Pagination changePage={changePage} pagination={pagination} page={page}/>
         </>
     )
 }
