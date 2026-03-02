@@ -6,6 +6,12 @@
     gap: 40px 20px;
     flex-wrap: wrap;
 }
+.header {
+    display: flex;
+    gap: 30px;
+    margin: 0 0 30px;
+    justify-content: space-between;
+}
 .block {
     width: calc(33.333% - 40px / 3);
 
