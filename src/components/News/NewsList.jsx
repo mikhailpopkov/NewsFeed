@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import FetchData from "../../API/FetchNews";
 import { useFetching } from "../../hooks/useFetching";
 import classes from './News.module.scss';
@@ -10,7 +10,7 @@ import Pagination from "../UI/Pagination/Pagination";
 import Select from "../UI/Select/Select";
 
 function NewsList({title}) {
-    const [activeTag, setActiveTag] = useState(null);
+    const [activeTag, setActiveTag] = useState('');
     const [news, setNews] = useState([]);
     const [limit, setLimit] = useState(6);
     const [page, setPage] = useState(1);
@@ -23,14 +23,33 @@ function NewsList({title}) {
         setTotalPages(newsData.meta.totalPages)
     })
 
+    const sortedAndFilteredNews = useMemo(() => {
+        const sorted = [...news];
+
+        if (selectedSort) {
+            sorted.sort((a, b) => a[selectedSort].toLowerCase().localeCompare(b[selectedSort].toLowerCase()))
+        }
+
+        if (activeTag) {
+            return sorted.filter(item => 
+                item.tags.some(t => t.name === activeTag)
+            )
+        }
+
+        return sorted
+    }, [activeTag, selectedSort, news])
+
+    function activeTagNews(tag) {
+        setActiveTag(tag)
+    }
+
+    function sortedNews(sorted) {
+        setSelectedSort(sorted)
+    }
+
     const pagination = getPagination(totalPages);
     function changePage(p) {
         setPage(p);
-    }
-    
-    function sortedPosts (sort) {
-        setSelectedSort(sort);
-        setNews([...news].sort((a, b) => a[sort].toLowerCase().localeCompare(b[sort].toLowerCase())))
     }
 
     useEffect(() => {
@@ -41,8 +60,8 @@ function NewsList({title}) {
         <>
             <h1>{title}</h1>
             <div className={classes.header}>
-                <Tags value={activeTag} onClickActiveTag={(i) => setActiveTag(i)}/>
-                <Select value={selectedSort} onChangeSort={(value) => sortedPosts(value)} defaulValue='Тип сортировки' options={
+                <Tags value={activeTag} onClickActiveTag={(tag) => activeTagNews(tag)}/>
+                <Select value={selectedSort} onChangeSort={(value) => sortedNews(value)} defaulValue='Тип сортировки' options={
                     [
                         {value: 'createdAt', name:'По дате публикации'},
                         {value: 'title', name: 'По названию'}
@@ -61,7 +80,7 @@ function NewsList({title}) {
                         <div className={classes.news}>
                             <div className={classes.wrapper}>
                                 {
-                                    news.map((item, index) => 
+                                    sortedAndFilteredNews.map((item, index) => 
                                         <NewsItem key={index} news={item}/>
                                     )
                                 }

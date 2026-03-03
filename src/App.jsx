@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Home from './Pages/Home'
 import News from './Pages/News'
 import Error from './Pages/Error';
