@@ -17,7 +17,7 @@ function Tags({value, onClickActiveTag}) {
     return (
         <div className={cl.tags}>
             {
-                tags.map((tag, i) => 
+                tags.map((tag) => 
                     <button onClick={() => onClickActiveTag(tag.name)} className={value == tag.name ? `${cl.tagBtn} ${cl.active}` : cl.tagBtn} key={tag.id}>{tag.name}</button>
                 )
             }

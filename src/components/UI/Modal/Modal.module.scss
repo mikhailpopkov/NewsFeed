@@ -1,0 +1,17 @@
+.modal {
+    position: fixed;
+    background-color: rgba(#000, .4);
+    display: block;
+    inset: 0;
+
+    &Container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 40px;
+        background-color: #195A94;
+        border-radius: 10px;
+        max-width: 500px;
+    }
+}

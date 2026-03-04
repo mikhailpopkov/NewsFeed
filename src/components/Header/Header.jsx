@@ -1,12 +1,17 @@
 import cl from '../Header/Header.module.scss'
 import { Link } from 'react-router-dom';
 
-function Header() {
+function Header({openModal}) {
     return (
         <div className={cl.header}>
             <div className={cl.wrapper}>
-                <Link to="/">Главная</Link>
-                <Link to="/news">Новости</Link>
+                <div className={cl.menu}>
+                    <Link to="/">Главная</Link>
+                    <Link to="/news">Новости</Link>
+                </div>
+                <button onClick={() => openModal(true)} className={cl.auth}>
+                    <img src='/public/images/authentication.svg' alt="Авторизация"/>
+                </button>
             </div>
         </div>
     )
