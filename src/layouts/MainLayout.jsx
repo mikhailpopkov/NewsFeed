@@ -9,11 +9,11 @@ function MainLayout() {
 
     return (
         <div className="layout">
-            <Header openModal={(i) => setIsVisible(i)}/>
+            <Header openModal={() => setIsVisible(true)}/>
             <div className="container">
                 <Outlet/>
             </div>
-            <Modal isVisible={isVisible}/>
+            <Modal isVisible={isVisible} closeModal={() => setIsVisible(false)}/>
         </div>
     )
 }

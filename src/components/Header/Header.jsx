@@ -9,8 +9,8 @@ function Header({openModal}) {
                     <Link to="/">Главная</Link>
                     <Link to="/news">Новости</Link>
                 </div>
-                <button onClick={() => openModal(true)} className={cl.auth}>
-                    <img src='/public/images/authentication.svg' alt="Авторизация"/>
+                <button onClick={() => openModal()} className={cl.auth}>
+                    <img src='/images/authentication.svg' alt="Авторизация"/>
                 </button>
             </div>
         </div>
