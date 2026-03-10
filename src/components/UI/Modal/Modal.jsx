@@ -12,7 +12,7 @@ function Modal({isVisible, closeModal}) {
         try {
             const res = await AuthUsers.registration(email, password, name);
             closeModal();
-            console.log(res)
+            localStorage.setItem('token', res.data.access_token)
         } catch(e) {
             console.log(e.message)
         }

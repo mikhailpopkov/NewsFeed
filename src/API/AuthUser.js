@@ -1,13 +1,13 @@
-import axios from "axios";
+import $api from "../http";
 
 export default class AuthUsers {
     static async registration(email, password, name) {
-        const data = await axios.post('http://nest.tomfoolery.ru/auth/register', {
+        const res = await $api.post('/auth/register', {
             email,
             password,
             name
         })
 
-        return data
+        return res
     }
 }
