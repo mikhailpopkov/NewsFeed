@@ -10,4 +10,18 @@ export default class AuthUsers {
 
         return res
     }
+
+    static async login(email, password) {
+        const res = await $api.post('/auth/login', {
+            email,
+            password
+        })
+
+        return res
+    }
+
+    static async logout() {
+        const res = await $api.post('/auth/logout')
+        return res
+    }
 }
