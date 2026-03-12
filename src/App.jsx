@@ -4,6 +4,7 @@ import Error from './Pages/Error';
 import { Route, Routes } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout';
 import NewsDetail from './Pages/NewsDetail';
+import Users from './Pages/Users';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
           <Route index element={<Home/>}/>
           <Route path="news" element={<News/>}/>
           <Route path='news/:id' element={<NewsDetail/>} />
+          <Route path="users" element={<Users/>}/>
           <Route path="*" element={<Error/>}/>
         </Route>
       </Routes>

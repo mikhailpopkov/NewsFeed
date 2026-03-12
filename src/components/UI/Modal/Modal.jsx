@@ -14,7 +14,7 @@ function Modal({isVisible, closeModal}) {
             closeModal();
             localStorage.setItem('token', res.data.access_token)
         } catch(e) {
-            console.log(e.message)
+            console.log(e.message);
         }
     }
     

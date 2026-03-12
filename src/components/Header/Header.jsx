@@ -8,6 +8,7 @@ function Header({openModal}) {
                 <div className={cl.menu}>
                     <Link to="/">Главная</Link>
                     <Link to="/news">Новости</Link>
+                    <Link to="/users">Список пользователей</Link>
                 </div>
                 <button onClick={() => openModal()} className={cl.auth}>
                     <img src='/images/authentication.svg' alt="Авторизация"/>
