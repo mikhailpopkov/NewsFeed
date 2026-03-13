@@ -1,7 +1,7 @@
 import ButtonForm from "../ButtonForm/ButtonForm";
 import cl from "./Modal.module.scss";
 import { useState } from "react";
-import { registrationUser } from "../../../store/slices/userSlice";
+import { registrationUser, loginUser } from "../../../store/slices/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 function Modal({isVisible, closeModal}) {
@@ -9,11 +9,16 @@ function Modal({isVisible, closeModal}) {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const dispatch = useDispatch();
-    const {status, isAuth} = useSelector(state => state.user);
+    const [active, setActive] = useState(true);
 
     function handleRegistration () {
         dispatch(registrationUser({email, password, name}))
         closeModal();
+    }
+    
+    function handleLogin () {
+        dispatch(loginUser({email, password}))
+        closeModal()
     }
     
     if (!isVisible) return null;
@@ -22,22 +27,43 @@ function Modal({isVisible, closeModal}) {
             <div className={cl.form} onClick={() => closeModal()}>
                 <div className={cl.formContainer} onClick={e => e.stopPropagation()}>
                     <div className={cl.formWrapper}>
-                        <h2>Создать аккаунт</h2>
-                        <div className={cl.formContent}>
-                            <input value={name} onChange={e => setName(e.target.value)} type="text" placeholder="ФИО"/>
-                            <input value={email} onChange={e => setEmail(e.target.value)} type="text" placeholder="Email"/>
-                            <input value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder="Пароль"/>
-                            <ButtonForm className={cl.btnForm} onClick={handleRegistration}>Зарегистрироваться</ButtonForm>
+                        <div className={`${cl.formItem} ${cl.formRegistration} ${active ? cl.active : ''}`}>
+                            <h2>Создать аккаунт</h2>
+                            <div className={cl.formContent}>
+                                <input value={name} onChange={e => setName(e.target.value)} type="text" placeholder="ФИО"/>
+                                <input value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="Email"/>
+                                <input value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder="Пароль"/>
+                                <ButtonForm className={cl.btnForm} onClick={handleRegistration}>Зарегистрироваться</ButtonForm>
+                            </div>
+                        </div>
+                        <div className={`${cl.formItem} ${cl.formLogin} ${active ? '' : cl.active}`}>
+                            <h2>Войти в аккаунт</h2>
+                            <div className={cl.formContent}>
+                                <input value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="Email"/>
+                                <input value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder="Пароль"/>
+                                <ButtonForm className={cl.btnForm} onClick={handleLogin}>Войти</ButtonForm>
+                            </div>
                         </div>
                     </div>
                     <div className={cl.formBanner}>
-                        <div className={cl.formBannerTitle}>
-                            Добро пожаловать!
+                        <div className={`${cl.formBannerItem} ${cl.formBannerLogin} ${active ? '' : cl.active}`}>
+                            <div className={cl.formBannerTitle}>
+                                Привет, Друг !
+                            </div>
+                            <div className={cl.formBannerText}>
+                                Введите свои личные данные, чтобы использовать все функции сайта
+                            </div>
+                            <ButtonForm onClick={() => setActive(!active)} className={`${cl.btnForm} ${cl.btnFormAnimate}`}>Зарегестрироваться</ButtonForm>
                         </div>
-                        <div className={cl.formBannerText}>
-                            Введите свои личные данные, чтобы использовать все функции сайта
+                        <div className={`${cl.formBannerItem} ${cl.formBannerRegistration} ${active ? cl.active : ''}`}>
+                            <div className={cl.formBannerTitle}>
+                                Добро пожаловать!
+                            </div>
+                            <div className={cl.formBannerText}>
+                                Введите свои личные данные, чтобы использовать все функции сайта
+                            </div>
+                            <ButtonForm onClick={() => setActive(!active)} className={`${cl.btnForm} ${cl.btnFormAnimate}`}>Войти</ButtonForm>
                         </div>
-                        <ButtonForm className={`${cl.btnForm} ${cl.btnFormAnimate}`}>Войти</ButtonForm>
                     </div>
                 </div>
             </div>
