@@ -2,7 +2,7 @@ import ButtonForm from "../ButtonForm/ButtonForm";
 import cl from "./Modal.module.scss";
 import { useState } from "react";
 import { registrationUser, loginUser } from "../../../store/slices/userSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function Modal({isVisible, closeModal}) {
     const [email, setEmail] = useState('');

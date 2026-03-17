@@ -24,4 +24,9 @@ export default class AuthUsers {
         const res = await $api.post('/auth/logout')
         return res
     }
+
+    static async refresh() {
+        const res = await $api.get('/auth/refresh', {withCredentials: true})
+        return res
+    }
 }

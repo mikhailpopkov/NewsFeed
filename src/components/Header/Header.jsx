@@ -1,7 +1,11 @@
 import cl from '../Header/Header.module.scss'
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import NavUser from '../UI/NavUser/NavUser';
 
 function Header({openModal}) {
+    const isAuth = useSelector((state) => state.user.isAuth);
+
     return (
         <div className={cl.header}>
             <div className={cl.wrapper}>
@@ -10,9 +14,7 @@ function Header({openModal}) {
                     <Link to="/news">Новости</Link>
                     <Link to="/users">Список пользователей</Link>
                 </div>
-                <button onClick={() => openModal()} className={cl.auth}>
-                    <img src='/images/authentication.svg' alt="Авторизация"/>
-                </button>
+                <NavUser openModal={openModal}/>
             </div>
         </div>
     )

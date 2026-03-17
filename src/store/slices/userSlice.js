@@ -31,8 +31,20 @@ export const logoutUser = createAsyncThunk(
         try {
             const res = await AuthUsers.logout();
             return res.data;
-        } catch (error) {
-            console.log(error)
+        } catch (e) {
+            console.log(e.message)
+        }
+    }
+)
+
+export const refreshToken = createAsyncThunk(
+    'user/refresh',
+    async () => {
+        try {
+            const res = await AuthUsers.refresh();
+            return res.data
+        } catch (e) {
+            console.log(e.message)
         }
     }
 )
@@ -82,10 +94,16 @@ const userSlice = createSlice({
             })
             .addCase(logoutUser.fulfilled, (state) => {
                 state.user = null,
-                state.status = 'logout'
+                state.status = 'idle'
                 state.isAuth = false
                 localStorage.removeItem('token')
             })
+            .addCase(refreshToken.fulfilled, (state, action) => {
+                state.user = action.payload
+                state.isAuth = true
+                state.status = 'succes'
+                localStorage.setItem('token', action.payload.access_token)
+            })  
     }
 })
 
