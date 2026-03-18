@@ -12,7 +12,7 @@ function NavUser({openModal}) {
             </button> : 
             <div className={cl.authProfile}>
                 <button className={cl.authProfileBtn}>
-                    <img src={user?.avatarUrl} alt={user?.name}/>
+                    <img src={user.avatarUrl ? user.avatarUrl : '/images/user.svg'} alt={user?.name}/>
                 </button>
             </div>
             }

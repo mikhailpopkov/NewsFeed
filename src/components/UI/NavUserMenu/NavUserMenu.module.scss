@@ -1,0 +1,61 @@
+.userModal {
+    position: absolute;
+    right: 50px;
+    top: 70px;
+    background-color: #a3bdd4;
+    border: 1px solid #f4a460;
+    border-radius: 10px;
+    z-index: 9999;
+    max-width: 260px;
+
+    &Header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 16px 16px 0;
+    }
+
+    &Img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &Info {
+        font-size: 14px;
+        color: #fff;
+        line-height: 1.2;
+
+        &Name {
+            font-weight: 700;
+        }
+
+        &Email {
+            font-weight: 300;
+        }
+    }
+
+    &Menu {
+        padding: 8px;
+
+        ul {
+            padding: 7px 0 0;
+            border-top: 1px solid #fff;
+        }
+
+        li {
+            list-style-type: none;
+
+            a {
+                text-decoration: none;
+                color: #fff;
+            }
+        }
+    }
+}

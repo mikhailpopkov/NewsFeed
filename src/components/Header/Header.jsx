@@ -2,6 +2,7 @@ import cl from '../Header/Header.module.scss'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import NavUser from '../UI/NavUser/NavUser';
+import NavUserMenu from '../UI/NavUserMenu/NavUserMenu';
 
 function Header({openModal}) {
     const isAuth = useSelector((state) => state.user.isAuth);
@@ -15,6 +16,7 @@ function Header({openModal}) {
                     <Link to="/users">Список пользователей</Link>
                 </div>
                 <NavUser openModal={openModal}/>
+                <NavUserMenu />
             </div>
         </div>
     )
