@@ -5,8 +5,11 @@ import { Route, Routes } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout';
 import NewsDetail from './Pages/NewsDetail';
 import Users from './Pages/Users';
+import { useAuth } from './hooks/useAuth';
 
 function App() {
+  
+  useAuth();
 
   return (
     <>

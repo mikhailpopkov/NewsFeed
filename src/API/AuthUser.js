@@ -1,4 +1,5 @@
 import $api from "../http";
+import axios from "axios";
 
 export default class AuthUsers {
     static async registration(email, password, name) {
@@ -25,8 +26,17 @@ export default class AuthUsers {
         return res
     }
 
-    static async refresh() {
-        const res = await $api.get('/auth/refresh', {withCredentials: true})
+    static async refresh(refreshToken) {
+        const res = await axios.post('https://nest.tomfoolery.ru/auth/refresh', null, {
+            headers: {
+                'Authorization': `Bearer ${refreshToken}`
+            }
+        })
+        return res
+    }
+
+    static async checkAuth() {
+        const res = await $api.get('/users/me')
         return res
     }
 }

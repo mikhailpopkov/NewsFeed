@@ -1,4 +1,5 @@
 import axios from "axios";
+import AuthUsers from "../API/AuthUser";
 
 export const API_URL = "https://nest.tomfoolery.ru";
 
@@ -18,23 +19,31 @@ $api.interceptors.request.use((config) => {
     return Promise.reject(error);
 })
 
-$api.interceptors.response.use((respose) => {
-    return respose
+$api.interceptors.response.use((response) => {
+    return response
 }, async (error) => {
     const originalRequest = error.config;
+    
+    if(error.response?.status == 401 && !originalRequest._retry) {
+        originalRequest._retry = true
+        const refreshToken = localStorage.getItem('refreshToken');
 
-    if (error.response?.status == 401 && !originalRequest._retry) {
-        originalRequest._retry = true;
+        if (!refreshToken) {
+            window.location.href = '/'
+            return Promise.reject(error)
+        }
 
-        try {  
-            const res = await $api.get('/auth/refresh', {withCredentials: true})
+        try {
+            const res =  await AuthUsers.refresh(refreshToken);
+
             localStorage.setItem('token', res.data.access_token);
-            originalRequest.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
+            localStorage.setItem('refreshToken', res.data.refresh_token);
 
-            return $api(originalRequest)
+            originalRequest.headers['Authorization'] = `Bearer ${res.data.access_token}`
+            return $api(originalRequest);
         } catch (refreshError) {
-            localStorage.removeItem('token');
-            return Promise.reject(refreshError)
+            window.location.href = '/'
+            return Promise.reject(refreshError);
         }
     }
 

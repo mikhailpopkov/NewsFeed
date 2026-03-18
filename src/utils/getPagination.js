@@ -9,7 +9,7 @@ function getPagination(totalPages) {
         }
 
         return pages;
-    })
+    }, [])
 
     return pagination
 }

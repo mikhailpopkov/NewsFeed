@@ -1,7 +1,5 @@
 import { useSelector } from "react-redux";
 import cl from './NavUser.module.scss';
-import { useEffect } from "react";
-import AuthUsers from "../../../API/AuthUser";
 
 function NavUser({openModal}) {
     const {isAuth, user} = useSelector(state => state.user);
@@ -14,7 +12,7 @@ function NavUser({openModal}) {
             </button> : 
             <div className={cl.authProfile}>
                 <button className={cl.authProfileBtn}>
-                    <img src={user.avatarUrl} alt={user.name}/>
+                    <img src={user?.avatarUrl} alt={user?.name}/>
                 </button>
             </div>
             }

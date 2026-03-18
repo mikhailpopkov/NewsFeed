@@ -37,14 +37,14 @@ export const logoutUser = createAsyncThunk(
     }
 )
 
-export const refreshToken = createAsyncThunk(
-    'user/refresh',
+export const checkAuth = createAsyncThunk(
+    'user/checkAuth',
     async () => {
         try {
-            const res = await AuthUsers.refresh();
+            const res = await AuthUsers.checkAuth()
             return res.data
-        } catch (e) {
-            console.log(e.message)
+        } catch (error) {
+            console.log(error)
         }
     }
 )
@@ -70,6 +70,7 @@ const userSlice = createSlice({
                 state.isAuth = true
                 state.status = 'success'
                 localStorage.setItem('token', action.payload.access_token)
+                localStorage.setItem('refreshToken', action.payload.refresh_token)
             })
             .addCase(registrationUser.rejected, (state) => {
                 state.user = null
@@ -86,6 +87,7 @@ const userSlice = createSlice({
                 state.isAuth = true
                 state.status = 'success'
                 localStorage.setItem('token', action.payload.access_token)
+                localStorage.setItem('refreshToken', action.payload.refresh_token)
             })
             .addCase(loginUser.rejected, (state) => {
                 state.user = null
@@ -97,12 +99,22 @@ const userSlice = createSlice({
                 state.status = 'idle'
                 state.isAuth = false
                 localStorage.removeItem('token')
+                localStorage.removeItem('refreshToken')
             })
-            .addCase(refreshToken.fulfilled, (state, action) => {
-                state.user = action.payload
+            .addCase(checkAuth.pending, (state) => {
+                state.user = null
+                state.status = 'loading'
+                state.isAuth = false
+            })
+            .addCase(checkAuth.fulfilled, (state, action) => {
+                state.user = action.payload.user
+                state.status = 'success'
                 state.isAuth = true
-                state.status = 'succes'
-                localStorage.setItem('token', action.payload.access_token)
+            })
+            .addCase(checkAuth.rejected, (state) => {
+                state.user = null
+                state.status = 'error'
+                state.isAuth = false
             })  
     }
 })
