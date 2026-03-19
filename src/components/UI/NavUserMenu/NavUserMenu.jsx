@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import cl from '../NavUserMenu/NavUserMenu.module.scss';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logoutUser } from '../../../store/slices/userSlice';
 
 
 function NavUserMenu() {
     const user = useSelector(state => state.user.user);
+    const dispatch = useDispatch();
 
     if (!user) return null;
 
@@ -27,7 +29,7 @@ function NavUserMenu() {
                 <ul>
                     <li><Link to="">Профиль</Link></li>
                     <li><Link to="">Настройки</Link></li>
-                    <li><Link to="">Выйти</Link></li>
+                    <li><Link onClick={() => dispatch(logoutUser())} to="">Выйти</Link></li>
                 </ul>
             </div>
         </div>

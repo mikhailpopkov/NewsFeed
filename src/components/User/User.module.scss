@@ -1,0 +1,42 @@
+.user {
+  position: relative;
+  padding: 20px;
+  background-color: transparent;
+  border: 1px solid #f4a460;
+  border-radius: 15px;
+  width: calc(33.333% - 40px / 3);
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: #f4a460 0px 2px 8px 0px;
+  }
+
+  &Link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+  }
+
+  &Container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &Imgbox {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
