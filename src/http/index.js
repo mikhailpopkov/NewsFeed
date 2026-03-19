@@ -5,7 +5,6 @@ export const API_URL = "https://nest.tomfoolery.ru";
 
 const $api = axios.create({
     baseURL: API_URL,
-    withCredentials: true,
 })
 
 $api.interceptors.request.use((config) => {
@@ -42,7 +41,13 @@ $api.interceptors.response.use((response) => {
             originalRequest.headers['Authorization'] = `Bearer ${res.data.access_token}`
             return $api(originalRequest);
         } catch (refreshError) {
-            window.location.href = '/'
+            if (refreshError.response?.status == 403) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('refreshToken');
+
+                window.location.href = "/";
+            }
+            
             return Promise.reject(refreshError);
         }
     }

@@ -115,6 +115,9 @@ const userSlice = createSlice({
                 state.user = null
                 state.status = 'error'
                 state.isAuth = false
+
+                localStorage.removeItem('token');
+                localStorage.removeItem('refreshToken');
             })  
     }
 })
