@@ -5,4 +5,11 @@ export default class Comments {
     const res = await $api.get(`/news/${id}/comments`);
     return res.data;
   }
+
+  static async postNewsComments(id, content) {
+    const res = await $api.post(`/news/${id}/comments`, {
+      content,
+    });
+    return res.data;
+  }
 }

@@ -1,3 +1,144 @@
 .comments {
   margin: 0 0 100px;
+
+  &Wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &Item {
+    display: flex;
+    gap: 20px;
+
+    &Imgbox {
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      border-radius: 50%;
+      flex-shrink: 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &Container {
+      padding: 15px 10px;
+      background-color: #d8d8d8;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    &Info {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 0 10px;
+
+      &Name {
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      &Role {
+        font-size: 14px;
+        opacity: 0.4;
+      }
+    }
+
+    &Content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      &Date {
+        font-size: 14px;
+        opacity: 0.4;
+      }
+    }
+  }
+
+  &Title {
+    font-size: 16px;
+    position: relative;
+    padding-left: 30px;
+    margin: 0 0 20px;
+
+    &::after {
+      position: absolute;
+      content: "";
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: url("/images/chat.svg") no-repeat;
+    }
+  }
+}
+
+.addingComments {
+  margin: 0 0 40px;
+
+  textarea {
+    width: 100%;
+    padding: 8px 12px;
+    min-height: 80px;
+    resize: none;
+    border: none;
+    outline: none;
+    background-color: #d8d8d8;
+    border-radius: 10px;
+
+    &::placeholder {
+      color: #000;
+    }
+  }
+
+  button {
+    padding: 5px 15px;
+    text-align: center;
+    margin-left: auto;
+    border: 1px solid transparent;
+    transition:
+      background-color 0.3s ease-in-out,
+      color 0.3s ease-in-out,
+      border-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: transparent;
+      color: #000;
+      border-color: #000;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &User {
+    display: flex;
+    gap: 20px;
+    margin: 0 0 15px;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    span {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #000;
+      color: #fff;
+    }
+  }
 }

@@ -75,7 +75,7 @@ function NewsDetail() {
               </div>
             </div>
           </div>
-          <Comments newsId={params.id} title="Комментарии к новости" />
+          <Comments newsId={params.id} title="Комментарии" />
         </>
       )}
     </>
