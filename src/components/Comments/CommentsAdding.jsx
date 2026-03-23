@@ -17,7 +17,7 @@ function CommentsAdding({ newsId }) {
   return (
     <div className={cl.addingComments}>
       <div className={cl.addingCommentsUser}>
-        {user.avatarUrl ? (
+        {user?.avatarUrl ? (
           <img src={user.avatarUrl} alt={user.name} />
         ) : (
           <span>Я</span>

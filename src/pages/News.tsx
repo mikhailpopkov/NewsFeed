@@ -1,7 +1,7 @@
 import NewsList from "../components/News/NewsList";
 
-function News() {
+const News: React.FC = () => {
   return <NewsList title="Новости" />;
-}
+};
 
 export default News;

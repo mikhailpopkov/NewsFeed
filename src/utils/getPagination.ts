@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
-function getPagination(totalPages) {
-  const pagination = useMemo(() => {
+function getPagination(totalPages: number) {
+  const pagination: number[] = useMemo(() => {
     const pages = [];
 
     for (let i = 0; i < totalPages; i++) {

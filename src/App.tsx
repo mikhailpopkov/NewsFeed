@@ -2,13 +2,13 @@ import Home from "./pages/Home";
 import News from "./pages/News";
 import Error from "./pages/Error";
 import { Route, Routes } from "react-router-dom";
-import MainLayout from "./layouts/MainLayout";
-import NewsDetail from "./pages/NewsDetail";
+import MainLayout from "./layouts/MainLayout.tsx";
+import NewsDetail from "./pages/NewsDetail.tsx";
 import Users from "./pages/Users";
 import UsersDetail from "./pages/UsersDetail";
 import { useAuth } from "./hooks/useAuth";
 
-function App() {
+const App: React.FC = () => {
   useAuth();
 
   return (
@@ -25,6 +25,6 @@ function App() {
       </Routes>
     </>
   );
-}
+};
 
 export default App;
