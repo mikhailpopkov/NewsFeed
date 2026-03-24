@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Button from "../UI/Button/Button";
+import Button from "../UI/Button/Button.tsx";
 import classes from "./News.module.scss";
 import { Tags } from "@/API/types/news.types";
 import { NewsProps } from "./news.types";

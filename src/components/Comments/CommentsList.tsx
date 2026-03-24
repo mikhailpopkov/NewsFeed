@@ -2,11 +2,13 @@ import cl from "./Comments.module.scss";
 import RequestsComments from "../../API/RequestsComments";
 import { useFetching } from "../../hooks/useFetching";
 import { useEffect, useState } from "react";
-import CommentsItem from "./CommentsItem";
-import CommentsAdding from "./CommentsAdding";
+import CommentsItem from "./CommentsItem.tsx";
+import CommentsAdding from "./CommentsAdding.tsx";
+import { CommentsListProps } from "./comments.types.ts";
+import { CommentsList } from "@/API/types/comments.types.ts";
 
-function Comments({ title, newsId }) {
-  const [comments, setComments] = useState([]);
+const Comments: React.FC<CommentsListProps> = ({ title, newsId }) => {
+  const [comments, setComments] = useState<CommentsList[]>([]);
   const [fetching, isLoading, isError] = useFetching(async () => {
     const res = await RequestsComments.getNewsComments(newsId);
     setComments(res.data);
@@ -42,6 +44,6 @@ function Comments({ title, newsId }) {
       )}
     </>
   );
-}
+};
 
 export default Comments;

@@ -1,6 +1,7 @@
 import cl from "./Comments.module.scss";
+import { CommentsItemProps } from "./comments.types";
 
-function CommentsItem({ comment }) {
+const CommentsItem: React.FC<CommentsItemProps> = ({ comment }) => {
   const { author } = comment;
   const dateObj = new Date(comment?.updatedAt);
   const formattedDate = `${dateObj.getDate()} ${dateObj.toLocaleString("ru-RU", { month: "long" })}, ${dateObj.getFullYear()}`;
@@ -35,6 +36,6 @@ function CommentsItem({ comment }) {
       )}
     </>
   );
-}
+};
 
 export default CommentsItem;

@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
-import Header from "../components/Header/Header";
-import Modal from "../components/UI/Modal/Modal";
+import Header from "../components/Header/Header.tsx";
+import Modal from "../components/UI/Modal/Modal.tsx";
 import { useState } from "react";
 
-function MainLayout() {
+const MainLayout: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   return (
@@ -15,6 +15,6 @@ function MainLayout() {
       <Modal isVisible={isVisible} closeModal={() => setIsVisible(false)} />
     </div>
   );
-}
+};
 
 export default MainLayout;

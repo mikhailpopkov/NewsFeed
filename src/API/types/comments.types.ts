@@ -4,6 +4,7 @@ export interface CommentAuthor {
   id: number;
   name: string;
   avatarUrl: string | null;
+  role?: string;
 }
 
 export interface CommentsList {

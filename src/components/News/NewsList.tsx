@@ -6,7 +6,7 @@ import NewsItem from "./NewsItem.tsx";
 import "/src/styles/style.scss";
 import Tags from "../UI/Tags/Tags";
 import getPagination from "../../utils/getPagination";
-import Pagination from "../UI/Pagination/Pagination";
+import Pagination from "../UI/Pagination/Pagination.tsx";
 import Select from "../UI/Select/Select";
 import { NewsListProps } from "./news.types";
 import { News } from "@/API/types/news.types";

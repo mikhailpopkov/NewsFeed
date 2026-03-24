@@ -12,7 +12,7 @@ export default class FetchData {
     return res.data;
   }
 
-  static async getNewsDetail(id: number): Promise<NewsById> {
+  static async getNewsDetail(id: string): Promise<NewsById> {
     const res = await $api.get<NewsById>("/news/" + id);
     return res.data;
   }
