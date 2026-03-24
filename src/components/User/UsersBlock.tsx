@@ -1,7 +1,8 @@
 import cl from "../User/User.module.scss";
 import { Link } from "react-router-dom";
+import { UserProps } from "./users.types";
 
-function User({ user }) {
+const User: React.FC<UserProps> = ({ user }) => {
   return (
     <div className={cl.user}>
       <div className={cl.userContainer}>
@@ -19,6 +20,6 @@ function User({ user }) {
       <Link to={`${user.id}`} className={cl.userLink} />
     </div>
   );
-}
+};
 
 export default User;

@@ -6,7 +6,7 @@ import MainLayout from "./layouts/MainLayout.tsx";
 import NewsDetail from "./pages/NewsDetail.tsx";
 import Users from "./pages/Users";
 import UsersDetail from "./pages/UsersDetail";
-import { useAuth } from "./hooks/useAuth";
+import { useAuth } from "./hooks/useAuth.ts";
 
 const App: React.FC = () => {
   useAuth();

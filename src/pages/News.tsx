@@ -1,4 +1,4 @@
-import NewsList from "../components/News/NewsList";
+import NewsList from "../components/News/NewsList.tsx";
 
 const News: React.FC = () => {
   return <NewsList title="Новости" />;

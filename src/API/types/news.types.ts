@@ -1,4 +1,11 @@
-export interface AuthorTypes {
+import { Meta } from "./users.types";
+
+export interface News {
+  data: NewsById[];
+  meta: Meta;
+}
+
+export interface Author {
   id: number;
   name: string;
   email: string;
@@ -9,25 +16,25 @@ export interface AuthorTypes {
   createdAt: string;
 }
 
-export interface TagsTypes {
+export interface Tags {
   id: number;
   name: string;
 }
 
-export interface NewsDetailData {
+export interface NewsById {
   id: number;
   title: string;
-  description: string;
-  content: string;
+  description: string | null;
+  content: string | null;
   imageUrl: string | null;
   views: number;
   authorId: number;
   createdAt: string;
   updatedAt: string;
-  author: AuthorTypes;
-  tags: TagsTypes[];
-  likesCount: number | null;
-  dislikesCount: number | null;
+  author: Author;
+  tags: Tags[] | null;
+  likesCount: number;
+  dislikesCount: number;
   isFavorited: boolean;
-  userReaction: string | null;
+  userReaction?: string | null;
 }
